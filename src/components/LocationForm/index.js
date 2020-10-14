@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 export default () => {
     const [metrics, setMetrics] = useState('dec');
-    const [coordinates, seCoordinates] = useState({lat: 0, lon: 0});
+    const [coordinates, seCoordinates] = useState({lat: '', lon: ''});
 
     const handleChange = type => e => {
         e.preventDefault();
@@ -15,7 +15,7 @@ export default () => {
                 <span>Location</span>
                 <button>✖</button>
             </span>
-            <form onclick={e => {e.preventDefault()}}>
+            <form onSubmit={e => {e.preventDefault()}}>
                 <div>
                     <span>Metrics</span>
                     <div>
@@ -27,11 +27,11 @@ export default () => {
                 <div>
                     <label>
                         <span>Latitude</span>
-                        <input name='lat' type='text' onChange={handleChange(this.name)}/>
+                        <input name='lat' type='text' onChange={handleChange('lat')} value={coordinates.lat}/>
                     </label>
                     <label>
                         <span>Longitude</span>
-                        <input name='lon' type='text' onChange={handleChange(this.name)}/>
+                        <input name='lon' type='text' onChange={handleChange('lon')} value={coordinates.lon}/>
                     </label>
                 </div>
                 <hr />
